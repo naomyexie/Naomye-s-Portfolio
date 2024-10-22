@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        ul {
+            padding: 12px 24px;
+            border: 1px solid #000;
+            border-radius: 12px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <div class="top-area">
+            <button type="button" @click="selectLevel = ''">全部</button>
+            <button type="button" @click="selectLevel = '及格'">及格</button>
+            <button type="button" @click="selectLevel = '不及格'">不及格</button>
+        </div>
+        <div class="content">
+            <ul v-for="user in filterUserData" :key="user.id">
+                <li>{{ user.name }}</li>
+                <li>國文 {{ user.chinese }} 分</li>
+                <li>英文 {{ user.english }} 分</li>
+                <li>數學 {{ user.math }} 分</li>
+                <li>自然 {{ user.nature }} 分</li>
+                <li>社會 {{ user.society }} 分</li>
+                <li>平均 {{ (user.chinese + user.english + user.math + user.nature + user.society) / 5 }}</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    selectLevel: '',
+                    users: [],
+                };
+            },
+            mounted() {
+                this.users = [
+                    {
+                        id: 1,
+                        name: 'Stanley',
+                        chinese: this.randomScore(),
+                        english: this.randomScore(),
+                        math: this.randomScore(),
+                        nature: this.randomScore(),
+                        society: this.randomScore(),
+
+                    },
+                    {
+                        id: 2,
+                        name: 'Mary',
+                        chinese: this.randomScore(),
+                        english: this.randomScore(),
+                        math: this.randomScore(),
+                        nature: this.randomScore(),
+                        society: this.randomScore(),
+                    },
+                    {
+                        id: 3,
+                        name: 'Ivy',
+                        chinese: this.randomScore(),
+                        english: this.randomScore(),
+                        math: this.randomScore(),
+                        nature: this.randomScore(),
+                        society: this.randomScore(),
+                    },
+                    {
+                        id: 4,
+                        name: 'Amy',
+                        chinese: this.randomScore(),
+                        english: this.randomScore(),
+                        math: this.randomScore(),
+                        nature: this.randomScore(),
+                        society: this.randomScore(),
+                    },
+                    {
+                        id: 5,
+                        name: 'Mark',
+                        chinese: this.randomScore(),
+                        english: this.randomScore(),
+                        math: this.randomScore(),
+                        nature: this.randomScore(),
+                        society: this.randomScore(),
+                    },
+                ];
+            },
+            // computed可以依據相應的變數來重新產生一個新的值
+            // 裡面一定要return
+            // 會依據data的變數來動態改別結果
+            // 常用在"篩選"
+            computed: {
+                //篩選後的人員名單
+                filterUserData() {
+                    if (this.selectLevel === '') {
+                        return this.users;
+                    }
+                    // const data = this.users.filter(user => user.gender === this.selectGender);
+                    // 
+                    const arr = [];
+                    if (this.selectLevel === '及格') {
+                        this.users.forEach(user => {
+                            const average = (user.chinese + user.english + user.math + user.nature + user.society) / 5;
+                            if (average >= 60) {
+                                arr.push(user);
+                            }
+                        });
+                    } else {
+                        this.users.forEach(user => {
+                            const average = (user.chinese + user.english + user.math + user.nature + user.society) / 5;
+                            if (average < 60) {
+                                arr.push(user);
+                            }
+                        });
+                    }
+                    return arr;
+                },
+            },
+            methods: {
+                randomScore() {
+                    return Math.floor(Math.random() * 101);
+                },
+            },
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

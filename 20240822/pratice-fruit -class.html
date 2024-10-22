@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迴圈</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-for -->
+        <!-- 使用 v-for 來重複渲染 HTML 元素 -->
+        <!-- key 一定要加，key裡面的值不可重複 -->
+        <!-- 第一種方法 -->
+        <!-- <div v-for="(fruit, index) in fruits" :key="fruit.id">
+            <div v-show="fruit > 2">{{ fruit }}</div>
+        </div>-->
+        <div v-for="fruit in fruits" :key="fruit.id">
+            {{ fruit.name }}&nbsp;{{ fruit.price }}&nbsp;&nbsp;來自{{ fruit.from }}
+        </div>
+
+        <!-- 第二種方法 -->
+        <!-- <table>
+            <tr v-for="fruit in fruits" :key="fruit.id">
+                <td v-show="fruit > 2">{{ fruit }}</td>
+            </tr>
+            <tr v-for="fruit in fruits" :key="fruit.id">
+                <td>{{ fruit.name }}</td>
+                <td>{{ fruit.price }}</td>
+                <td>{{ fruit.from }}</td>
+            </tr>
+        </table>
+    </div> -->
+        <!-- 第三種方法 -->
+        <table border="2">
+            <thead>
+                <tr>
+                    <td>水果名稱</td>
+                    <td>水果產地</td>
+                    <td>水果價格</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="fruit in fruits" :key="fruit.id">
+                    <td>{{ fruit.name }}</td>
+                    <td>{{ fruit.price }}</td>
+                    <td>{{ fruit.from }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+    <!-- 使用Vue -->
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    fruits: [],
+                };
+            },
+            mounted() {
+                this.fruits = [
+                    { id: 1, name: '西瓜', price: '100元', from: '台灣' },
+                    { id: 2, name: '香蕉', price: '50元', from: '台灣' },
+                    { id: 3, name: '橘子', price: '120元/ 190g', from: '澳洲' },
+                    { id: 4, name: '番茄', price: '179元/ 盒', from: '台灣'
+                    },
+                    { id: 5, name: '芭樂', price: '130元/1.2kg', from: '台灣' },
+                    { id: 6, name: '火龍果', price: '80元', from: '台灣' },
+                    { id: 7, name: '榴槤', price: '40元', from: '台灣' },
+                    { id: 8, name: '鳳梨', price: '70元', from: '台灣' },
+                    { id: 9, name: '蘋果', price: '99元/ 5顆', from: '紐西蘭' },
+                    { id: 10, name: '木瓜', price: '99元/ 顆', from: '台灣' },
+                ];
+            },
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

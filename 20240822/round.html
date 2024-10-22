@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <button type="button" @click="pritNumber('點擊')">按我印出</button>
+        <button type="button" @click="message = '你好'">按我改變message</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    message: 'Hello',
+                };
+            },
+            mounted() {
+                this.pritNumber('渲染');
+            },
+            updated() {
+                this.pritNumber('畫面更新');
+            },
+            // 當此頁被銷毀時觸發(只執行一次)
+            unmounted() {
+                this.pritNumber('畫面銷毀');
+
+            },
+            methods: {
+                pritNumber(message = '') {
+                    console.log(123);
+
+                },
+            },
+        }).mount('#app');
+        
+    </script>
+</body>
+
+</html>

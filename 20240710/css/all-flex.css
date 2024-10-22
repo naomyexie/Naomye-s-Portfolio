@@ -1,0 +1,395 @@
+* {
+  /* 自動計算 去除padding, border面積變大效應 */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+@media (max-width:1280px) {
+  body {
+    flex-direction: column;
+  }
+}
+
+.nav {
+  background-color: rgb(90, 147, 107);
+  width: 366px;
+  height: 100%;
+  padding: 100px;
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+@media(max-width:1280px) {
+  .nav {
+    width: 100%;
+    height: 110px;
+    padding: 15px;
+    justify-content: space-between;
+  }
+}
+
+@media(max-width:560px) {
+  .nav {
+    position: relative;
+    padding: 0;
+  }
+}
+
+.logo {
+  background-color: rgb(207, 206, 209);
+  background-image: url(../svg/forest-jungle-tree.svg);
+  background-size: 115%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+  display: flex;
+
+}
+
+@media(max-width:1280px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+  }
+}
+
+@media(max-width:560px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}
+
+.logo:hover {
+  transform: scale(1.2);
+  /* border-radius: 60%; */
+  transform: rotate(360deg);
+  transition: 3s;
+  box-shadow: -5px 8px 20px rgb(43, 6, 6), 1px 10px 24px rgba(255, 237, 237, 0.8);
+}
+
+.nav-btn-all {
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+@media(max-width:1280px) {
+  .nav-btn-all {
+    background-color: transparent;
+    height: 100%;
+    width: auto;
+    justify-content: right;
+  }
+}
+
+@media(max-width:560px) {
+  .nav-btn-all {
+    background-color: rgb(199, 202, 166);
+    width: 70%;
+    height: 220px;
+    position: absolute;
+    top: 95px;
+    left: 10px;
+    display: none;
+
+
+  }
+}
+
+.nav-btn {
+  background-color: rgb(174, 187, 36);
+  width: 100%;
+  color: rgb(251, 250, 248);
+  text-align: center;
+  font-style: Microsoft JhengHei;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  padding: 15px 0;
+  margin-bottom: 15px;
+  border-style: inset;
+  border-color: transparent;
+}
+
+@media(max-width:1280px) {
+  .nav-btn {
+    width: auto;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: auto;
+    padding: 15px 22px;
+  }
+}
+
+@media(max-width:560px) {
+  .nav-btn {
+    width: 90%;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+  }
+}
+
+.nav-btn:hover {
+  background-color: rgb(221, 126, 2);
+  border-style: inset;
+  border-color: wheat;
+}
+
+.nav-btn:active {
+  background-color: rgb(139, 38, 95);
+  color: wheat;
+}
+
+.container {
+  background-color: rgb(202, 216, 188);
+  width: calc(100% - 366px);
+  height: 100%;
+  /* padding-top: calc((100vh - 567px) / 2); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 注意 */
+  flex: 1;
+}
+
+@media(max-width:1280px) {
+  .container {
+    width: 100%;
+    height: calc(100% - 110px);
+    padding: 70px 0;
+  }
+}
+
+@media(max-width:560px) {
+  .container {
+    height: calc(100% - 30px);
+    /* margin: auto; */
+    display: flex;
+    padding: 0;
+    align-content: center;
+  }
+}
+
+.content {
+  background-color: rgb(202, 216, 188);
+  width: 960px;
+  height: 567px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media(max-width:1400px) {
+  .content {
+    width: 800px;
+    /* height: calc(100hv - 5px); */
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+  }
+}
+
+@media(max-width:1280px) {
+  .content {
+    width: 535px;
+    height: 100%;
+  }
+}
+
+@media(max-width:560px) {
+  .content {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+  }
+}
+
+.img {
+  background-color: bisque;
+  height: 100%;
+  width: calc((100% - 10px * 2) / 3);
+  background-position: center;
+  background-size: cover;
+
+}
+
+@media(max-width:1400px) {
+  .img {
+    height: calc(50% - 5px);
+  }
+}
+
+@media(max-width:1280px) {
+  .img {
+    background-position: top;
+    height: calc(50% - 5px);
+  }
+}
+
+@media(max-width:560px) {
+  .img {
+    background-position: top;
+    width: 100%;
+    height: calc(100%/3);
+
+  }
+}
+
+.img:hover {
+  transform: scale(0.8);
+  border-radius: 30px;
+  transform: rotateY(180deg);
+  transition: 2s;
+}
+
+.img-1 {
+  background-image: url(../img/meerkat.jpg);
+
+}
+
+.img-2 {
+  background-image: url(../img/Tiger.jpg);
+}
+
+.img-3 {
+  background-image: url(../img/panda.jpg);
+}
+
+@media(max-width:1400px) {
+  .img-1 {
+    width: 100%;
+    background-position-y: -20px;
+    margin-bottom: 10px;
+  }
+
+  .img-2 {
+    background-position-y: 30%;
+    width: calc(50% - 5px);
+    margin-right: 10px;
+  }
+
+  .img-3 {
+    background-position-y: 30%;
+    width: calc(50% - 5px);
+  }
+
+  @media(max-width:1280px) {
+    .img-1 {
+      width: 100%;
+      margin-bottom: 10px;
+      background-position: center;
+    }
+
+    .img-2 {
+      width: calc(50% - 5px);
+      margin-right: 10px;
+    }
+
+    .img-3 {
+      width: calc(50% - 5px);
+    }
+  }
+}
+
+@media(max-width:560px) {
+  .img-1 {
+    width: 100%;
+    margin-bottom: auto;
+  }
+
+  .img-2 {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .img-3 {
+    width: 100%;
+  }
+}
+
+/* ====================== */
+.ham-btn {
+  background-color: rgb(174, 187, 36);
+  width: 80px;
+  height: 80px;
+  /* /* 顯示模式為區塊層級 */
+  position: relative;
+  display: none;
+
+}
+
+@media(max-width:560px) {
+  .ham-btn {
+    transform: translate(10px, 15px);
+    display: block;
+  }
+}
+
+/* 空格代表後代  .ham-btn 的後代 .line*/
+.ham-btn .line {
+  background-color: rgb(251, 250, 248);
+  width: 80%;
+  height: 5px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 動作一秒內慢慢完成 */
+  transition: 1s;
+}
+
+.ham-btn .line-1 {
+  top: 25%;
+}
+
+.ham-btn .line-2 {
+  top: 50%;
+}
+
+.ham-btn .line-3 {
+  top: 75%
+}
+
+/* #ham-btn-switch:checked 按下 */
+/* "+" => " 在#ham-btn-switch 之後(之右)的第一個兄弟 .ham-btn 的後代 .line-1*/
+#ham-btn-switch:checked+.ham-btn .line-1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#ham-btn-switch:checked+.ham-btn .line-2 {
+  /* 顯示模式 => 隱藏 */
+  display: none;
+}
+
+#ham-btn-switch:checked+.ham-btn .line-3 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* "~" 波浪符號 => 後面所有的兄弟 裡面的 .menu */
+#ham-btn-switch:checked~.nav-btn-all {
+  /* 顯示模式 => 隱藏 */
+  display: flex;
+}

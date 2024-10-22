@@ -1,0 +1,309 @@
+@charset "UTF-8";
+@keyframes sea-1 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(60deg);
+  }
+  40% {
+    transform: rotate(120deg);
+  }
+  60% {
+    transform: rotate(180deg);
+  }
+  80% {
+    transform: rotate(240deg);
+  }
+}
+@keyframes sea-2 {
+  0% {
+    transform: rotate(60deg);
+  }
+  20% {
+    transform: rotate(120deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(240deg);
+  }
+  80% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes waveAnimation {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+@keyframes boat {
+  0% {
+    position: absolute;
+    left: 0;
+    top: 150px;
+    transform: rotate(10deg);
+  }
+  5% {
+    position: absolute;
+    left: 25px;
+    top: 160px;
+    transform: rotate(6deg);
+  }
+  12% {
+    position: absolute;
+    left: 50px;
+    top: 170px;
+    transform: rotate(0deg);
+  }
+  18% {
+    position: absolute;
+    left: 75px;
+    top: 173px;
+    transform: rotate(5deg);
+  }
+  24% {
+    position: absolute;
+    left: 100px;
+    top: 176px;
+  }
+  30% {
+    left: 125px;
+    top: 186px;
+    transform: rotate(8deg);
+  }
+  36% {
+    left: 150px;
+    top: 182px;
+    transform: rotate(-2deg);
+  }
+  42% {
+    left: 175px;
+    top: 188px;
+    transform: rotate(2deg);
+  }
+  48% {
+    left: 200px;
+    top: 188px;
+    transform: rotate(-2deg);
+  }
+  56% {
+    left: 225px;
+    top: 185px;
+    transform: rotate(3deg);
+  }
+  60% {
+    left: 250px;
+    top: 180px;
+    transform: rotate(-5deg);
+  }
+  66% {
+    left: 275px;
+    top: 173px;
+    transform: rotate(1deg);
+  }
+  72% {
+    left: 300px;
+    top: 170px;
+    transform: rotate(-3deg);
+  }
+  78% {
+    left: 325px;
+    top: 162px;
+    transform: rotate(1deg);
+  }
+  86% {
+    left: 350px;
+    top: 160px;
+    transform: rotate(5deg);
+  }
+  92% {
+    left: 375px;
+    top: 157px;
+    transform: rotate(-6deg);
+  }
+  100% {
+    left: 400px;
+    top: 155px;
+    transform: rotate(-6deg);
+  }
+}
+@keyframes zoom {
+  0%, 50%, 100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  57% {
+    transform: rotate(0deg);
+  }
+  63%, 88% {
+    transform: scale(1.5);
+    filter: blur(0px);
+  }
+  75% {
+    transform: scale(2);
+    filter: blur(0px);
+  }
+}
+@keyframes border {
+  0%, 50%, 100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  1% {
+    transform: rotate(-15deg);
+    filter: blur(3px);
+  }
+  8% {
+    transform: rotate(0deg) scale(0.95);
+    filter: blur(0px);
+  }
+  13% {
+    transform: scale(0.9) rotate(-15deg);
+    filter: blur(3px);
+  }
+  19%, 32% {
+    transform: rotate(0deg) scale(0.85);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.8) rotate(-15deg);
+    filter: blur(3px);
+  }
+  38% {
+    transform: scale(0.9) rotate(5deg);
+    filter: blur(3px);
+  }
+  51% {
+    transform: rotate(10deg);
+    filter: blur(3px);
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(28, 27, 27);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-image: url("/img/海洋-removebg-preview.png");
+  background-repeat: no-repeat;
+  background-size: 650px;
+  background-position: center;
+  box-shadow: 0 0 0 30px rgba(53, 51, 51, 0.8117647059), 0 0 120px 160px #7e7a7a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+}
+
+.container:hover {
+  animation: border 16s infinite;
+}
+
+.circle {
+  background-color: rgba(87, 190, 234, 0.9960784314);
+  width: 450px;
+  height: 450px;
+  background-position: top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 50%;
+  filter: grayscale(40%);
+}
+
+.circle:hover {
+  animation: zoom 16s infinite;
+  transform: scale(1.2);
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  width: 100%;
+  line-height: 300px;
+  text-align: center;
+  color: rgb(236, 241, 244);
+  text-shadow: 1px 1px 2px rgba(5, 5, 5, 0.71);
+  font-size: 40px;
+}
+
+.sky {
+  background-image: url("/img/sky.png");
+  width: 550px;
+  height: 560px;
+  border-radius: 40%;
+  opacity: 0.8;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  margin-left: -280px;
+  margin-top: -320px;
+  transform-origin: center;
+}
+
+.wave {
+  background: rgba(255, 255, 255, 0.753);
+  width: 610px;
+  height: 575px;
+  border-radius: 40%;
+  opacity: 0.6;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -380px;
+  transform-origin: center;
+}
+
+.wave.one {
+  animation: sea-1 16s linear 0s infinite;
+}
+
+.wave.two {
+  animation: sea-1 20s linear 2s infinite;
+}
+
+.circle.wave {
+  opacity: 0.9;
+}
+
+.boat {
+  background-image: url("/svg/boat.svg");
+  background-size: auto;
+  width: 70px;
+  height: 50px;
+  background-repeat: no-repeat;
+  animation-name: boat;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 180px;
+  left: 50px;
+}/*# sourceMappingURL=boatloading.css.map */

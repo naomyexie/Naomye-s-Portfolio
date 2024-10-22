@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彈性容器</title>
+    <style>
+         * {
+      box-sizing: border-box;
+    }
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            /* 預設row */
+            flex-direction: row;
+            /* 預設 */
+            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            /* 水平置中 */
+            justify-content: center;
+            /* 開頭(一般左邊) */
+            justify-content: flex-start;
+            justify-content: flex-end;
+            /* 左右環繞物體一半的間距，其餘固定間距 */
+            /* justify-content: space-around; */
+            /* 左右置頂，其餘固定間距 */
+            /* justify-content: space-between; */
+            /* 排列組合固定間距，含左右 */
+            /* justify-content: space-evenly; */
+            /* align-items: center; */
+            align-content: space-around;
+            align-content: space-between;
+            align-content: space-evenly;
+        }
+
+        .box {
+            background-color: chocolate;
+            width: 100px;
+            height: 100px;
+            border: 1px solid brown;
+            font-size: 32px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <!-- .box{$@6}*10 -->
+    <!-- $:數字 @從6開始 -->
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+    <div class="box">11</div>
+    <div class="box">12</div>
+    <div class="box">13</div>
+    <div class="box">14</div>
+    <div class="box">15</div>
+</body>
+
+</html>

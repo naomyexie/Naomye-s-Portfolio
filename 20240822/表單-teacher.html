@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表單輸入</title>
+</head>
+<body>
+  <div id="app">
+    <label>
+        <input id="name" type="text" @change="printNumber($event, '你好')">
+        <hr>
+        {{ name }}
+        <hr>
+    </label>
+    <label for="response"></label>
+    <input id="response" type="text" @input="printNumber($event, '不好')">
+
+    <hr>
+    <!-- 單選 -->
+    <label>
+        <input type="radio" name="gender" value="男" @change="(e) => gender = e.target.value">
+        男
+    </label>
+    <label>
+        <input type="radio" name="gender" value="女" @change="(e) => gender = e.target.value">
+        女
+    </label>
+    <p>{{ gender }}</p>
+
+     <hr>
+     <!-- 下拉選單 -->
+      <label>
+        <select @change="(e) => location = e.target.value">
+            <option value="" hidden>請選擇</option>
+            <option value="台北">台北</option>
+            <option value="台中">台中</option>
+            <option value="台南">台南</option>
+        </select>
+      </label>
+      {{ location }}
+
+      <hr>
+      <!-- 多選 -->
+        <p>聯絡時間:</p>
+        <label>
+            <input type="checkbox" value="早上" @change="putTime">
+            早上
+        </label>
+        <label>
+            <input type="checkbox" value="中午" @change="putTime">
+            中午
+        </label>
+        <label>
+            <input type="checkbox" value="晚上" @change="putTime">
+            晚上
+        </label>
+        {{ time }}
+</div>
+
+  <!-- 使用原生js獲取輸入框數值 -->
+  <script>
+    // 輸入框有2種事件
+    // change 事件是在當數值改變後，焦點離開時觸發
+    // input 事件只要有輸入就會觸發
+    // const nameInput = document.querySelector('#name');
+    // nameInput.addEventListener('change', function (e) {
+    //     console.log(e.type, '事件發生');
+    //     console.log(e.target.value);
+    // });
+  </script>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const { createApp } = Vue;
+  
+    createApp({
+      data() {
+        return {
+            name: '',
+            gender: '',
+            location: '',
+            time: [],
+        };
+      },
+      methods: {
+        printNumber(e, param) {
+            this.name = `${param} ${e.target.value}`;
+        },
+
+        // 選擇時間
+        putTime(e) {
+            console.log(e.target.checked);
+            if (e.target.checked) {
+                this.time.push(e.target.value);
+            } else {
+                const index = this.time.indexOf(e.target.value);
+                this.time.splice(index, 1);
+            }
+        },
+      },
+    }).mount('#app');
+  </script>
+</body>
+</html>

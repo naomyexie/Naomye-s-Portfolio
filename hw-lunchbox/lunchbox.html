@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>便當訂單</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .img-block {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(195, 31, 31);
+        }
+
+        img {
+            height: 50dvh;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 30px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding: 4px 12px 12px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+        }
+
+        .card legend {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .card label,
+        .card input {
+            cursor: pointer;
+        }
+
+        .card .choose {
+            display: flex;
+            justify-content: center;
+            height: 22.5px;
+            color: blue;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            color: #333333;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #333333;
+            color: #fff;
+        }
+
+        .statistics-block {
+            padding: 12px 30px;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <figure class="img-block">
+            <img src="./便當菜單.jpg" alt="便當菜單">
+        </figure>
+        <div class="container">
+            <fieldset class="card">
+                <legend>老師</legend>
+                <label v-for="option in options" :key="option">
+                    <input type="radio" name="teacher-option" v-model="teacherChoice" :value="option"
+                        :disabled="orderSubmitted"> {{ option }}
+                </label>
+                <hr>
+                <p class="choose">{{ teacherChoice }}</p>
+            </fieldset>
+            <fieldset class="card">
+                <legend>助教</legend>
+                <label v-for="option in options" :key="option">
+                    <input type="radio" name="assistant-option" v-model="assistantChoice" :value="option"
+                        :disabled="orderSubmitted"> {{ option }}
+                </label>
+                <hr>
+                <p class="choose">{{ assistantChoice }}</p>
+            </fieldset>
+            <fieldset class="card" v-for="(student, index) in students" :key="index">
+                <legend>同學{{ index + 1 }}</legend>
+                <label v-for="option in options" :key="option">
+                    <input type="radio" :name="'s' + (index + 1) + '-option'" v-model="studentChoices[index]"
+                        :value="option" :disabled="orderSubmitted"> {{ option }}
+                </label>
+                <hr>
+                <p class="choose">{{ studentChoices[index] }}</p>
+            </fieldset>
+        </div>
+        <hr>
+        <aside class="statistics-block">
+            <div>
+                <button type="button" class="btn" @click="submitOrder" :disabled="orderSubmitted">送出訂單</button>
+                <button type="button" class="btn" @click="resetOrder">重訂便當</button>
+            </div>
+            <p>總共訂 {{ totalOrders }} 個便當</p>
+            <p>
+                共
+                <b class="total">{{ totalPrices }}</b>
+                元
+            </p>
+        </aside>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    teacherChoice: '',
+                    assistantChoice: '',
+                    students: Array.from({ length: 15 }, (value, index) => `Student ${index + 1}`),
+                    studentChoices: (() => {
+                        let choices = [];
+                        for (let i = 0; i < 15; i++) {
+                            choices.push('');
+                        }
+                        return choices;
+                    })(),
+                    options: [
+                        '大雞腿便當', '大滷雞腿便當', '日式豬排便當',
+                        '招牌排骨便當', '鯖魚便當', '三杯雞便當',
+                        '茄汁排骨便當', '招牌雞腿便當'
+                    ],
+                    prices: {
+                        '大雞腿便當': 95,
+                        '大滷雞腿便當': 95,
+                        '日式豬排便當': 85,
+                        '招牌排骨便當': 85,
+                        '鯖魚便當': 85,
+                        '三杯雞便當': 85,
+                        '茄汁排骨便當': 85,
+                        '招牌雞腿便當': 65
+                    },
+                    orderSubmitted: false
+                };
+            },
+            computed: {
+                totalOrders() {
+                    let orderCount = 0;
+
+                    if (this.teacherChoice) orderCount++;
+                    if (this.assistantChoice) orderCount++;
+
+                    this.studentChoices.forEach(choice => {
+                        if (choice) orderCount++;
+                    });
+                    return orderCount;
+                },
+                totalPrices() {
+                    let total = 0;
+
+                    if (this.teacherChoice) total += this.prices[this.teacherChoice] || 0;
+                    if (this.assistantChoice) total += this.prices[this.assistantChoice] || 0;
+
+                    this.studentChoices.forEach(choice => {
+                        if (choice) total += this.prices[choice] || 0;
+                    });
+
+                    return total;
+                },
+                doSubmit() {
+                    return this.teacherChoice || this.assistantChoice || this.studentChoices.some(choice => choice);
+                }
+            },
+            methods: {
+                submitOrder() {
+                    if (!this.doSubmit) {
+                        alert('未填菜單，請選擇便當。');
+                        return;
+                    }
+                    this.orderSubmitted = true;
+                    alert('訂單已提交');
+                },
+                resetOrder() {
+                    this.teacherChoice = '';
+                    this.assistantChoice = '';
+                    this.studentChoices = (() => {
+                        let choices = [];
+                        for (let i = 0; i < 15; i++) {
+                            choices.push('');
+                        }
+                        return choices;
+                    })();
+                    this.orderSubmitted = false;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

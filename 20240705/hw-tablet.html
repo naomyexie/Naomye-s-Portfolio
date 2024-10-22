@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw-768</title>
+    <style>
+        /* *:通用選擇器 *是全部的意思 */
+        * {
+            /* 自動計算 去除padding, border面積變大效應 */
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            
+        }
+
+        .nav {
+            background-color: rgb(90, 147, 107);
+            width: 100%;
+            height: 110px;
+            float: left;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .logo {
+            background-color: rgb(207, 206, 209);
+            background-image: url(./svg/forest-jungle-tree.svg);
+            background-size: 115%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 50px;
+        }
+
+        .nav-btn-all {
+            height: 100%;
+            float: right;
+            
+        }
+
+        .nav-btn {
+            background-color: rgb(174, 187, 36);
+            color: rgb(251, 250, 248);
+            /* font-size: 20px; */
+            text-align: center;
+            margin-top: 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            float: right;
+            padding:15px 22px;
+        }
+
+        .nav-btn:hover {
+            background-color: rgb(221, 126, 2);
+            color: wheat;
+            border-style: inset;
+        }
+
+        .nav-btn:active {
+            background-color: rgb(139, 38, 95);
+            color: wheat;
+        }
+
+        .container {
+            background-color: rgb(202, 216, 188);
+            width: 100%;
+            height: calc(100% - 110px);
+            float: left;
+            padding: 70px 0;
+        }
+
+        .content {
+            background-color: rgb(202, 216, 188);
+            width: 535px;
+            height: 615px;
+            margin: auto;
+        }
+
+        .img {
+            background-color: bisque;
+            background-size: cover;
+            background-position: top;
+            width: calc((100% - 10px * 2) / 3);
+            height: 50%;
+            float: left;
+        }
+
+        .img:hover {
+            transform: scale(0.8);
+            border-radius: 30px;
+            transform: rotateY(180deg);
+            transition: 2s;
+        }
+
+        .img-1 {
+            width: 100%;
+            background-image: url(./img/meerkat.jpg);
+            margin-bottom: 10px;
+        }
+
+        .img-2 {
+            background-image: url(./img/Tiger.jpg);
+            width: calc(50% - 5px);
+            margin-right: 10px;
+        }
+
+        .img-3 {
+            width: 50%;
+            background-image: url(./img/panda.jpg);
+            width: calc(50% - 5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <!-- 漢堡條按鈕 -->
+        
+        <div class="nav-btn-all">
+            <a href="https://www.zoo.gov.taipei/" target="_blank" class="nav-btn">台北市立動物園</a>
+            <a href="https://zoo-info.hccg.gov.tw/" target="_blank" class="nav-btn">新竹市立動物園</a>
+            <a href="https://zoo.kcg.gov.tw/zh-tw/" target="_blank" class="nav-btn">壽山動物園</a>
+        </div>
+        <div class="logo"></div>
+        
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="img img-1"></div>
+            <div class="img img-2"></div>
+            <div class="img img-3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- 1.左方nav
+    a.logo(加特效)
+    b.按鈕區*3
+        i.超連結,hover + active特效
+        ii.手機板有漢堡按鈕，按了會出現選單
+
+2.右方內容區
+    a.圖片區
+        i.三張圖片(hover特效) -->

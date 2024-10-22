@@ -1,0 +1,22 @@
+回到頁首? 
+scrollY: {
+    translateX: [
+        ["elInY", "elCenterY", "elOutY"],
+        [0, 'screenWidth', 'screenWidth'],
+        {
+            500: [0, 'screenWidth', 'screenWidth'], // Screen width < 500
+            900: [0, 'screenWidth', 'screenWidth'], // Screen width > 500 and < 900
+            1400: [0, 'screenWidth', 'screenWidth'], // Screen width > 900
+        }
+    ],
+    // 可選，根據需要添加垂直位置的設置
+    translateY: [
+        ["elInY", "elCenterY", "elOutY"],
+        ['screenHeight/2-100', 'screenHeight/2', 'screenHeight'],
+        {
+            500: ['screenHeight/2-100', 'screenHeight/2', 'screenHeight'], // Screen width < 500
+            900: ['screenHeight/2-100', 'screenHeight/2', 'screenHeight'], // Screen width > 500 and < 900
+            1400: ['screenHeight/2-100', 'screenHeight/2', 'screenHeight'], // Screen width > 900
+        }
+    ]
+}

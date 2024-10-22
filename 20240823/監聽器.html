@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <label>
+            <input type="text" v-model="firstName">
+            {{ name }}
+        </label>
+        <p>{{fullName}}</p>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    firstName: '',
+                    fullName: '',
+                };
+            },
+            // 監聽器
+            watch: {
+                // 監聽fistName的變數，當有改變時則執行所想做的事情
+                firstName: {
+                    handler: function (newValue, oldValue) {
+                        console.log(123);
+                    },
+                    immediate:true,
+                },
+            },
+            methods: {
+
+            },
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

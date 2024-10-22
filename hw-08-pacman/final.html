@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACMAN-LEVEL2</title>
+    <link rel="stylesheet" href="./css/final.css">
+    <link rel="stylesheet" href="./css/pacman.css">
+    <link rel="stylesheet" href="./css/ghost_blinky往右.css">
+    <link rel="stylesheet" href="./css/ghost_blinky往下.css">
+    <link rel="stylesheet" href="./css/ghost_blinky往左.css">
+    <link rel="stylesheet" href="./css/ghost_blinky往上.css">
+    <link rel="stylesheet" href="./css/ghost_blue.css">
+    <link rel="stylesheet" href="./font/PixelOperator8-Bold.ttf">
+    <link rel="stylesheet" href="./font/PixelOperator8.ttf">
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <!-- <div class="play"></div> -->
+    <div class="continue">
+        <a class="reload-link" href="" onclick="window.location.reload(); return false;"></a>
+
+    </div>
+    <div class="header">
+        <span class="font-level">LEVEL</span>
+        <span class="font-level-b">2</span>
+        <span class="font-score">HIGHSCORE 1452</span>
+        <span class="font-score-b">1452</span>
+        
+    </div>
+    <div class="maze">
+        <div class="img-blinky"></div>
+        <span class="font-3">200</span>
+        <div class="wall" id="cell1"></div>
+        <div class="wall" id="cell2"></div>
+        <div class="wall" id="cell3"></div>
+        <div class="wall" id="cell4"></div>
+        <div class="wall" id="cell5"></div>
+        <div class="wall" id="cell6"></div>
+        <div class="wall" id="cell7"></div>
+        <div class="wall" id="cell8"></div>
+        <div class="wall" id="cell9"></div>
+        <div class="wall" id="cell10"></div>
+        <div class="wall" id="cell11"></div>
+        <div class="wall" id="cell12"></div>
+        <div class="path" id="air1"></div>
+        <div class="path" id="air2"></div>
+        <div class="path" id="air3"></div>
+        <div class="path" id="air4"></div>
+        <div class="path" id="air5"></div>
+        <div class="path" id="air6"></div>
+        <div class="path" id="air7"></div>
+        <div class="path" id="air8"></div>
+        <div class="path" id="air9"></div>
+        <div class="path" id="air10"></div>
+        <div class="path" id="air11"></div>
+        <div class="path" id="air12"></div>
+        <div class="path" id="air13"></div>
+        <div class="path" id="air14"></div>
+        <div class="path" id="air15"></div>
+        <div class="path" id="air16"></div>
+        <div class="path" id="air17"></div>
+        <div class="path" id="air18"></div>
+        <div class="path" id="air19"></div>
+        <div class="path" id="air20"></div>
+        <div class="path" id="air21"></div>
+        <div class="path" id="air22"></div>
+        <div class="path" id="air23"></div>
+        <div class="path" id="air24"></div>
+        <div class="path" id="air25"></div>
+        <div class="path" id="air26"></div>
+        <div class="path" id="air27"></div>
+        <div class="path" id="air28"></div>
+        <div class="path" id="air29"></div>
+        <div class="path" id="air30"></div>
+        <div class="path" id="air31"></div>
+        <div class="path" id="air32"></div>
+        <div class="path" id="air33"></div>
+        <div class="path" id="air34"></div>
+        <div class="path" id="air35"></div>
+        <div class="path" id="air36"></div>
+        <div class="bean" id="dot1"></div>
+        <div class="bean" id="dot2"></div>
+        <div class="bean" id="dot3"></div>
+        <div class="bean" id="dot4"></div>
+        <div class="bean" id="dot5"></div>
+        <div class="bean" id="dot6"></div>
+        <div class="bean" id="dot7"></div>
+        <div class="bean" id="dot8"></div>
+        <div class="bean" id="dot9"></div>
+        <div class="bean" id="dot10"></div>
+        <div class="bean" id="dot11"></div>
+        <div class="bean" id="dot12"></div>
+        <div class="bean" id="dot13"></div>
+        <div class="bean" id="dot14"></div>
+        <div class="bean" id="dot15"></div>
+        <div class="bean" id="dot16"></div>
+        <div class="bean" id="dot17"></div>
+        <div class="bean" id="dot18"></div>
+        <div class="bean" id="dot19"></div>
+        <div class="bean" id="dot20"></div>
+        <div class="bean" id="dot21"></div>
+        <div class="bean" id="dot22"></div>
+        <div class="bean" id="dot23"></div>
+        <div class="bean" id="dot24"></div>
+        <div class="bean" id="dot25"></div>
+        <div class="bean" id="dot26"></div>
+        <div class="bean" id="dot27"></div>
+        <div class="bean" id="dot28"></div>
+        <div class="bean" id="dot29"></div>
+        <div class="bean" id="dot30"></div>
+        <div class="bean" id="dot31"></div>
+        <div class="bean" id="dot32"></div>
+        <div class="bean" id="dot33"></div>
+        <div class="bean" id="dot34"></div>
+        <div class="bean" id="dot35"></div>
+        <div class="bean" id="dot36"></div>
+        <div class="bean" id="dot37"></div>
+        <div class="bean" id="dot38"></div>
+        <div class="bean" id="dot39"></div>
+        <div class="bean" id="dot40"></div>
+        <div class="bean" id="dot41"></div>
+        <div class="bean" id="dot42"></div>
+        <div class="bean" id="dot43"></div>
+            <!-- 添加 ghost_blinky 内容 -->
+       <div class="fruit"></div>
+        <div class="box-red-left">
+            <div class="ghost-red-left">
+                <span class="eyes-left"></span>
+                <span class="skirt-red">
+                    <span class="extra-skirt-red"></span>
+                </span>
+            </div>
+        </div>
+        <div class="box-red-down">
+            <div class="ghost-red-down">
+                <span class="eyes-down"></span>
+                <span class="skirt-red">
+                    <span class="extra-skirt-red"></span>
+                </span>
+            </div>
+        </div>
+        <div class="box-red-right">
+            <div class="ghost-red-right">
+                <span class="eyes-right"></span>
+                <span class="skirt-red">
+                    <span class="extra-skirt-red"></span>
+                </span>
+            </div>
+        </div>
+        <div class="box-red-up">
+            <div class="ghost-red-up">
+                <span class="eyes-up"></span>
+                <span class="skirt-red">
+                    <span class="extra-skirt-red"></span>
+                </span>
+            </div>
+        </div>
+        <div class="box-blue">
+            <div class="ghost-blue">
+                <span class="skirt-blue">
+                    <span class="extra-skirt-blue"></span>
+                </span>
+                <span class="smile">
+                    <span class="extra-smile"></span>
+                </span>
+            </div>
+        </div>
+        <div class="pac-all">
+            <span class="pacman"></span>
+        </div>
+    
+    </div>
+    <div class="footer"></div>
+    <a href="https://play.google.com/store/apps/details?id=com.namcobandaigames.pacmantournaments&pcampaignid=web_share" target="_blank" class="logo">
+    </a>
+</body>
+
+</html>

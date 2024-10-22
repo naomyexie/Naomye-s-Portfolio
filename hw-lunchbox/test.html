@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>便當訂單</title>
+    <style>
+        /* 样式保持不变 */
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <figure class="img-block">
+            <img src="./便當菜單.jpg" alt="便當菜單">
+        </figure>
+        <div class="container">
+            <!-- 内容保持不变 -->
+        </div>
+        <hr>
+        <aside class="statistics-block">
+            <div>
+                <button type="button" class="btn" @click="submitOrder" :disabled="!doSubmit">送出訂單</button>
+                <button type="button" class="btn" @click="resetOrder">重訂便當</button>
+            </div>
+            <p>總共訂 {{ totalOrders }} 個便當</p>
+            <p>
+                共
+                <b class="total">{{ totalPrices }}</b>
+                元
+            </p>
+        </aside>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    teacherChoice: '',
+                    assistantChoice: '',
+                    students: Array.from({ length: 15 }, (value, index) => `Student ${index + 1}`),
+                    studentChoices: Array(15).fill(''),
+                    options: [
+                        '大雞腿便當', '大滷雞腿便當', '日式豬排便當',
+                        '招牌排骨便當', '鯖魚便當', '三杯雞便當',
+                        '茄汁排骨便當', '招牌雞腿便當'
+                    ],
+                    prices: {
+                        '大雞腿便當': 95,
+                        '大滷雞腿便當': 95,
+                        '日式豬排便當': 85,
+                        '招牌排骨便當': 85,
+                        '鯖魚便當': 85,
+                        '三杯雞便當': 85,
+                        '茄汁排骨便當': 85,
+                        '招牌雞腿便當': 65
+                    },
+                    orderSubmitted: false
+                };
+            },
+            computed: {
+                totalOrders() {
+                    let orderCount = 0;
+
+                    if (this.teacherChoice) orderCount++;
+                    if (this.assistantChoice) orderCount++;
+
+                    this.studentChoices.forEach(choice => {
+                        if (choice) orderCount++;
+                    });
+
+                    return orderCount;
+                },
+                totalPrices() {
+                    let total = 0;
+
+                    if (this.teacherChoice) total += this.prices[this.teacherChoice] || 0;
+                    if (this.assistantChoice) total += this.prices[this.assistantChoice] || 0;
+
+                    this.studentChoices.forEach(choice => {
+                        if (choice) total += this.prices[choice] || 0;
+                    });
+
+                    return total;
+                },
+                doSubmit() {
+                    // 确保至少有一个选择
+                    return this.teacherChoice || this.assistantChoice || this.studentChoices.some(choice => choice);
+                }
+            },
+            methods: {
+                submitOrder() {
+                    if (!this.doSubmit) {
+                        alert('未填菜單，請選擇便當。');
+                        return;
+                    }
+                    this.orderSubmitted = true;
+                    // 提交成功后的逻辑
+                    
+                },
+                resetOrder() {
+                    this.teacherChoice = '';
+                    this.assistantChoice = '';
+                    this.studentChoices = Array(15).fill('');
+                    this.orderSubmitted = false;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

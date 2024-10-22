@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inline行內元素</title>
+    <style>
+        .my-word-1{
+            background-color: blue;
+            color: rgb(227, 127, 255);
+            /* 顯示模式 行內區塊:才能顯示出寬高 */
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
+        .my-word-2{
+            background-color: rgb(59, 59, 91);
+            width: 200px;
+            height: 200px;
+            color: rgb(170, 222, 135);
+            /* float也能讓行內元素表現出寬高的特性 */
+            float: left;
+        }
+        .my-word-3{
+            background-color: rgb(59, 91, 71);
+            width: 200px;
+            height: 200px;
+            color: burlywood;
+            /* float也能讓行內元素表現出寬高的特性 */
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- span就是一種行內元素，不會獨佔一列 無法顯示出寬高的特性 -->
+    <span class="my-word-1">路在江湖路爭鳴</span>路在天涯路飄零
+    </div>
+    <div>
+        <!-- span就是一種行內元素，不會獨佔一列 無法顯示出寬高的特性 -->
+    <span class="my-word-2">路在江湖路爭鳴</span>路在天涯路飄零
+    </div>
+    <span class="my-word-3">路在江湖路爭鳴</span>路在天涯路飄零
+</div>
+</body>
+</html>

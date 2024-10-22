@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" type="button">按鈕</button>
+    <input id="name" type="text">
+    <script>
+        //當使用function時，this指向是觸發事件的元素
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', function(){
+            console.log(this);
+        });
+
+
+        // 當使用箭頭函式時，this會指向上一層
+        const name = document.querySelector('#name');
+        name.addEventListener('input', () => {
+            console.log(this);
+
+        });
+    </script>
+</body>
+
+</html>

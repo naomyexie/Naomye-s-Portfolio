@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-red-up {
+    /* background-color: beige; */
+    width: 150px;
+    height: 150px;
+    /* background-color: blue; */
+    position: absolute;
+    top: 200px;
+    left: 415px;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+}
+
+.ghost-red-up {
+    background-color: #fe0000;
+    width: 90px;
+    height: 80px;
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: scale(0.55);
+    justify-content: center;
+    /* overflow: hidden; */
+}
+
+.ghost-red-up::before {
+    content: "";
+    position: absolute;
+    background: white;
+    height: 32px;
+    width: 28px;
+    border-radius: 70%;
+    top: 7px;
+    left: 11px;
+    z-index: 1;
+}
+
+.ghost-red-up::after {
+    content: "";
+    position: absolute;
+    background: white;
+    height: 32px;
+    width: 28px;
+    border-radius: 70%;
+    top: 7px;
+    left: 49px;
+    z-index: 1;
+}
+
+.eyes-up::before {
+    content: "";
+    position: absolute;
+    background: blue;
+    height: 18px;
+    width: 13px;
+    border-radius: 50%;
+    left: 18px;
+    top: 7px;
+    z-index: 2;
+}
+
+.eyes-up::after {
+    content: "";
+    position: absolute;
+    background: blue;
+    height: 18px;
+    width: 13px;
+    border-radius: 50%;
+    left: 56px;
+    top: 7px;
+    z-index: 2;
+}
+
+.skirt-red::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 20px;
+    background-color: #fe0000;
+    border-radius: 0 0 30px 0;
+    bottom: -8px;
+    left: 0;
+    border-bottom: red solid 3px;
+    border-left: red solid 2px;
+
+}
+
+.skirt-red::after {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 20px;
+    background-color: #fe0000;
+    bottom: -8px;
+    left: 68px;
+    border-radius: 0 0 0 30px;
+    border-bottom: red solid 3px;
+    border-right: red solid 2px;
+
+}
+
+.extra-skirt-red::before,
+.extra-skirt-red::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 28px;
+    /* border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px; */
+    border-radius: 0 0 30px 30px;
+    background-color: #fe0000;
+    bottom: -8px;
+    border-bottom: red solid 3px;
+
+}
+
+.extra-skirt-red::before {
+    left: 18px;
+
+}
+
+.extra-skirt-red::after {
+    left: 43px;
+}

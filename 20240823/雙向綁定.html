@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第一種:v-on -->
+        <label>
+            <input type="text" :value="name" @input="(e)=> name=e.target.value">
+            {{name}}
+        </label>
+        <button type="button" @click="name=''">清空</button>
+        <!-- 第二種:v-model -->
+        <label>
+            <input type="text" v-model="name">
+            {{name}}
+        </label>
+        <button type="button" @click="name=''">清空</button>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    name: '',
+                };
+            },
+            methods: {
+            },
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

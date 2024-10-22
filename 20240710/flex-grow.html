@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壓縮</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            /* 讓東西並排 */
+            display: flex;
+            flex-direction: row;
+            /* 預設水平置中 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: chocolate;
+            width: 100px;
+            height: 100px;
+            border: 1px solid brown;
+            font-size: 32px;
+
+        }
+
+        .box-1 {
+            /* grow把剩餘空間拿來分配:照比例分配 */
+            /* flex-grow:0; */
+            /* flex-grow:0;  =>>不分配 */
+            flex: 1;
+        }
+
+        .box-2 {
+            /* flex-grow:1; */
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-1">1</div>
+    <div class="box box-2">2</div>
+
+</body>
+
+</html>

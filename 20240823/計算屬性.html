@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <button type="button" @click="count++">count:{{ count }}</button>
+        <p>{{ doubleCount }}</p>
+        <hr>
+        <button type="button" @click="selectGender = ''">全部</button>
+        <button type="button" @click="selectGender = '男'">男</button>
+        <button type="button" @click="selectGender = '女'">女</button>
+        <ul>
+            <li v-for="user in filterUserData" :key="user.id">{{ user.name }}-{{ user.gender }}</li>
+        </ul>
+    </div>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    count: 0,
+                    selectGender: '',
+                    users: [
+                        { id: 1, name: 'Stanley', gender: '男' },
+                        { id: 2, name: 'Mary', gender: '女' },
+                        { id: 3, name: 'Ivy', gender: '女' },
+                        { id: 4, name: 'Amy', gender: '女' },
+                        { id: 5, name: 'Mark', gender: '男' },
+                    ]
+                };
+            },
+            // computed可以依據相應的變數來重新產生一個新的值
+            // 裡面一定要return
+            // 會依據data的變數來動態改別結果
+            // 常用在"篩選"
+            computed: {
+                doubleCount() {
+                    return this.count * 2;
+                },
+                //篩選後的人員名單
+                filterUserData() {
+                    if (!this.selectGender) {
+                        return this.users;
+                    }
+
+                    // const data = this.users.filter(user => user.gender === this.selectGender);
+                    // 
+                    let arr = [];
+                    this.users.forEach(user => {
+                        if (user.gender === this.selectGender) {
+                            arr.push(user);
+                        }
+                    });
+                    return arr;
+                },
+            },
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

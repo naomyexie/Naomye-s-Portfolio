@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RandomUser</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black">
+  <div id="app">
+    <div class="container mx-auto bg-black">
+      <div class="mb-3 pt-3 text-white">
+        <button type="button" class="py-1 px-3 text-sky-500 rounded outline outline-sky-500 mr-3" @click="fetchData">
+          換一組
+        </button>
+        <button type="button" class="py-1 px-3 text-sky-500 rounded outline outline-sky-500 mr-3" @click="changeResolution">
+          切換大頭貼解析度
+        </button>
+        現在圖片解析度：
+        <span class="text-white text-xl font-bold">{{ resolution }}</span>
+      </div>
+      <article class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pb-3">
+        <div v-for="(user, index) in users" :key="index" class="relative bg-white border border-white rounded">
+          <div class="absolute top-5 right-5">
+            <button type="button" class="py-1 px-2 bg-black/50 border border-red-500 rounded-[50%]" @click="user.like = !user.like">
+              <span v-show="user.like" class="text-2xl" title="愛心">❤️</span>
+              <span v-show="!user.like" class="text-2xl" title="取消愛心">🤍</span>
+            </button>
+          </div>
+          <img :src="user.picture[pictureKey]" alt="人像相片" class="w-full aspect-square">
+          <div class="flex flex-col gap-3 p-3">
+            <p class="text-2xl">
+              {{ user.name.first }} {{ user.name.last }}(
+                <span v-if="user.gender === 'male'">👨</span>
+                <span v-else>👩</span>
+              )
+            </p>
+            <p>
+              Email：
+              <a href="" class="underline text-blue-500 break-all">
+                {{ user.email }}
+              </a>
+            </p>
+            <p>
+              Phone：
+              <a href="" class="underline text-blue-500">
+                {{ user.phone }}
+              </a>
+            </p>
+            <p>
+              Cell：
+              <a href="" class="underline text-blue-500">
+                {{ user.cell }}
+              </a>
+            </p>
+            <p>City：{{ user.location.city }}</p>
+            <p>State：{{ user.location.state }}</p>
+            <p>Country：{{ user.location.country }}</p>
+            <p>Postcode：{{ user.location.postcode }}</p>
+            <p>
+              Address：{{ user.location.city }} {{ user.location.state }} {{ user.location.country }} {{ user.location.postcode }}
+            </p>
+            <p>
+              description：{{ user.location.timezone.description }}
+            </p>
+            <p>
+              <small>dob：{{ user.dob.date }}</small>
+            </p>
+            <p>
+              <small>registered：{{ user.registered.date }}</small>
+            </p>
+            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" :src="`https://maps.google.com.tw/maps?f=q&amp;hl=zh-TW&amp;geocode=&amp;q=${user.location.coordinates.longitude},${user.location.coordinates.latitude}&amp;z=10&amp;output=embed`"></iframe>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./randomuser copy.js"></script>
+</body>
+</html>
